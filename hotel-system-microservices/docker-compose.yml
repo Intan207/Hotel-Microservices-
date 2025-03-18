@@ -1,0 +1,19 @@
+
+version: '3'
+services:
+  user-service:
+    build: ./user-service
+    ports:
+      - "8081:80"
+  room-service:
+    build: ./room-service
+    ports:
+      - "8082:80"
+  reservation-service:
+    build: ./reservation-service
+    ports:
+      - "8083:80"
+  payment-service:
+    build: ./payment-service
+    ports:
+      - "8084:80"
