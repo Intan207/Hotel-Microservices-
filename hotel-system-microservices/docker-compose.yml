@@ -1,19 +1,31 @@
+version: '3.8'
 
-version: '3'
 services:
   user-service:
-    build: ./user-service
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
     ports:
-      - "8081:80"
+      - "8001:80"
+    depends_on:
+      - user-db
+    networks:
+      - hotel-net
+
   room-service:
-    build: ./room-service
+    build:
+      context: ./room-service
+      dockerfile: Dockerfile
     ports:
-      - "8082:80"
+      - "8002:80"
+    depends_on:
+      - room-db
+    networks:
+      - hotel-net
+
   reservation-service:
-    build: ./reservation-service
+    build:
+      context: ./reservation-service
+      dockerfile: Dockerfile
     ports:
-      - "8083:80"
-  payment-service:
-    build: ./payment-service
-    ports:
-      - "8084:80"
+     
